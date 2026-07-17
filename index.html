@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Page</title>
+
+  <!-- ===== CSS goes here ===== -->
+  <style>
+    /* Reset a few defaults so things look consistent across browsers */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Styles for the whole page */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* The white "card" that holds everything */
+    .card {
+      background-color: white;
+      max-width: 420px;
+      width: 100%;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    /* Heading style */
+    h1 {
+      color: #2c3e50;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    /* Paragraph style */
+    p {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    /* A colored badge/tag, to show inline-block + padding + border-radius */
+    .badge {
+      display: inline-block;
+      background-color: #eaf3ff;
+      color: #2980b9;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Button style */
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    /* Hover and click (active) states */
+    button:hover {
+      background-color: #2980b9;
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+
+    /* The counter text below the button */
+    #counter {
+      margin-top: 16px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    /* A simple list, to show list-style and spacing */
+    ul {
+      text-align: left;
+      list-style: none;
+      margin-top: 25px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+
+    li {
+      padding: 8px 0;
+      color: #555;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* A little colored dot before each list item */
+    li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background-color: #3498db;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HTML content goes here ===== -->
+  <div class="card">
+    <span class="badge">Beginner project</span>
+    <h1 id="title">Hello, World!</h1>
+    <p>Click the button below and watch what happens.</p>
+    <button id="myButton">Click Me</button>
+    <p id="counter">You clicked 0 times.</p>
+
+    <ul>
+      <li>HTML gives the page structure</li>
+      <li>CSS makes it look good</li>
+      <li>JavaScript makes it interactive</li>
+    </ul>
+  </div>
+
+  <!-- ===== JavaScript goes here ===== -->
+  <script>
+    // Step 1: grab the elements we need from the page
+    const button = document.getElementById("myButton");
+    const counterText = document.getElementById("counter");
+    const title = document.getElementById("title");
+    const card = document.querySelector(".card");
+
+    // Step 2: keep track of how many times the button was clicked
+    let clickCount = 0;
+
+    // Step 3: listen for clicks, and update the page when it happens
+    button.addEventListener("click", function() {
+      clickCount = clickCount + 1;
+      counterText.textContent = "You clicked " + clickCount + " times.";
+
+      // Bonus: change the heading color randomly each click
+      const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      title.style.color = randomColor;
+
+      // Bonus: give the card a little "pop" animation on click
+      card.style.transform = "scale(1.02)";
+      setTimeout(function() {
+        card.style.transform = "scale(1)";
+      }, 100);
+    });
+  </script>
+
+</body>
+</html>
